@@ -1,7 +1,4 @@
 <x-app>
-    <x-modals.create>
-    </x-modals.create>
-
     <section class="section">
         <div class="container">
             <div class="section-title">
@@ -55,16 +52,19 @@
                 <div class="admin__table">
                     @foreach ($users as $user)
 
-                    <div class="admin__row">
-                        <div class="admin__users"><a
-                                href="{{ route("profile", $user) }}"><span>{{$loop->iteration}}</span>
-                                {{$user->fullname()}}</a></div>
+                    <div class="admin__row" id="row-{{$user->id}}">
+                        <div class="admin__users">
+                            <span>{{$loop->iteration}}</span>
+                            <a href="{{ route("profile", $user) }}">{{$user->fullname()}}</a>
+                        </div>
                         <div class="admin__buttons">
 
                             <button class="admin__buttons-change modalEdit" data-toggle="modal" data-target="#create"
                                 data-id="{{$user->id}}">Редактировать</button>
-
-                            <button class="admin__buttons-delete">Удалить</button>
+                            @if(auth()->user()->id!==$user->id)
+                            <button data-id="{{$user->id}}" data-toggle="modal" data-target="#deleteModal"
+                                class="admin__buttons-delete">Удалить</button>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -73,4 +73,8 @@
             </div>
         </div>
     </section>
+    <x-modals.create>
+    </x-modals.create>
+    <x-modals.delete>
+    </x-modals.delete>
 </x-app>

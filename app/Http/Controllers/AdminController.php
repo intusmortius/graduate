@@ -18,25 +18,20 @@ class AdminController extends Controller
         return Response::json($user);
     }
 
-    public function update(User $user)
+    public function update(Request $request)
     {
 
-        $attributes = request()->validate([
-            "name" => ["required"],
-            "surname" => ["required"],
-            "fathername" => ["required"],
-            "faculty" => ["required"],
-            "specialty" => ["required"],
-            "cathedra" => ["required"],
-            "group" => ["required"],
-            "workplace" => ["required"],
+        User::find($request->id)->update([
+            "name" => $request->name,
+            "surname" => $request->surname,
+            "fathername" => $request->fathername,
+            "faculty" => $request->faculty,
+            "specialty" => $request->specialty,
+            "cathedra" => $request->cathedra,
+            "group" => $request->group,
+            "workplace" => $request->workplace
         ]);
 
-
-
-
-        $user->update($attributes);
-
-        return back();
+        return Response::json($request);
     }
 }

@@ -944,6 +944,10 @@ a {
   }
 }
 
+.edit-modal .btn {
+  margin-bottom: 10px;
+}
+
 .edit-modal .modal-header {
   background-color: #F57C00;
   color: #fff;
@@ -979,5 +983,12 @@ a {
   font-size: 14px;
   padding-left: 5px;
   border-radius: 5px;
+}
+
+.edit-modal__delete p {
+  margin-bottom: 20px;
+  font-size: 20px;
+  line-height: 22px;
+  text-align: center;
 }
 

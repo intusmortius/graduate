@@ -95,15 +95,24 @@
 
 $(document).ready(function () {
   $(".modalEdit").on("click", editForm);
-  $("#xuy").on("click", storeData);
+  $("#modalFormEdit").on("submit", storeData);
+  $(".cancelBtn").click(function () {
+    $(".modal").modal("hide");
+  });
+  $("#deleteBtn").click(deleteUser);
+  $(".admin__buttons-delete").click(function () {
+    $(".edit-modal__delete").attr("data-id", $(this).attr("data-id"));
+  });
 });
 
 function editForm() {
-  var user_id = $(this).data("id");
+  var user_id = $(this).attr("data-id");
+  console.log(user_id);
   $.ajax({
-    type: 'GET',
-    url: "admin/".concat(user_id, "/edit"),
+    type: 'POST',
+    url: "/admin/".concat(user_id, "/edit"),
     data: {
+      _token: $("meta[name='csrf-token']").attr("content"),
       user: user_id
     },
     success: function success(response) {
@@ -115,16 +124,18 @@ function editForm() {
       $("#specialty").val(response["specialty"]);
       $("#workplace").val(response["workplace"]);
       $("#group").val(response["group"]);
-      $("#modelFormEdit").attr("data-id", "".concat(response["id"]));
+      $("#modalFormEdit").attr("data-id", "".concat(response["id"]));
     },
-    error: function error() {},
+    error: function error() {
+      console.log("");
+    },
     dataType: 'json'
   });
 }
 
-function storeData() {
-  var CSRF_TOKEN = $("meta[name='csrf-token']").attr("content");
-  var user_id = $("#modelFormEdit").data("id");
+function storeData(e) {
+  e.preventDefault();
+  var id = $("#modalFormEdit").attr("data-id");
   var name = $("#name").val();
   var surname = $("#surname").val();
   var fathername = $("#fathername").val();
@@ -134,28 +145,47 @@ function storeData() {
   var group = $("#group").val();
   var workplace = $("#workplace").val();
   $.ajax({
-    headers: {
-      'X-HTTP-Method-Override': 'PATCH'
-    },
-    type: 'PATCH',
-    url: "/admin/".concat(user_id),
+    type: 'POST',
+    url: "admin/".concat(id),
     data: {
-      _token: CSRF_TOKEN,
-      _method: "PATCH",
+      _token: $("meta[name='csrf-token']").attr("content"),
+      id: id,
       name: name,
       surname: surname,
       fathername: fathername,
       faculty: faculty,
-      cathedra: cathedra,
       specialty: specialty,
+      cathedra: cathedra,
       group: group,
       workplace: workplace
     },
     success: function success(response) {
-      console.log("xuyt");
+      $('#create').modal('hide');
+      $("#row-".concat(response["id"], " a")).text(response["name"] + " " + response["surname"]);
+      console.log(response);
     },
     error: function error(data) {
-      console.log(data);
+      console.log("error");
+    },
+    dataType: 'json'
+  });
+}
+
+function deleteUser() {
+  var id = $(".edit-modal__delete").attr("data-id");
+  $.ajax({
+    type: "POST",
+    url: "/admin/".concat(id, "/delete"),
+    data: {
+      _token: $("meta[name='csrf-token']").attr("content")
+    },
+    success: function success(response) {
+      $('#deleteModal').modal('hide');
+      $("#row-".concat(response["id"])).remove();
+      $("#row-".concat(response["id"]));
+    },
+    error: function error(response) {
+      console.log("error");
     },
     dataType: 'json'
   });

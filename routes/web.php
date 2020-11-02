@@ -23,9 +23,10 @@ Route::middleware("auth")->group(function () {
     Route::get('/profile/{user}', [GraduateController::class, "show"])->name('profile');
     Route::get('/profile/{user}/edit', [GraduateController::class, "edit"])->middleware("can:update,user")->name('edit');
     Route::get('admin', [AdminController::class, "index"])->middleware("role:admin")->name("admin");
-    Route::get('admin/{user}/edit', [AdminController::class, "edit"])->middleware("role:admin")->name("complete-modal-edit");
+    Route::post('admin/{user}/edit', [AdminController::class, "edit"])->middleware("role:admin")->name("complete-modal-edit");
+    Route::post('/admin/{user}', [AdminController::class, "update"])->name('admin-update');
+    Route::post('/admin/{user}/delete', [GraduateController::class, "delete"]);
     Route::patch('/profile/{user}', [GraduateController::class, "update"])->name('profile-update');
-    Route::patch('/admin/{user}', [AdminController::class, "update"])->name('admin-update');
 });
 
 Auth::routes();

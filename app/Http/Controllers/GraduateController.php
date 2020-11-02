@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 
 class GraduateController extends Controller
@@ -55,5 +55,12 @@ class GraduateController extends Controller
     public function create()
     {
         return view("modals.create");
+    }
+
+    public function delete(User $user)
+    {
+        $user->delete();
+        $id = $user->id;
+        return Response::json(["id" => $id]);
     }
 }
