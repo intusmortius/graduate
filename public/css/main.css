@@ -25,6 +25,10 @@ a {
   color: rgba(24, 24, 24, 0.9);
 }
 
+button {
+  outline: none;
+}
+
 .container {
   max-width: 945px;
   margin: auto;
@@ -110,6 +114,7 @@ a {
   position: relative;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 10px;
 }
 
@@ -133,7 +138,18 @@ a {
   background-color: lightgrey;
 }
 
+.admin__roles {
+  flex-basis: 20%;
+}
+
+.admin__roles h4 {
+  font-size: 14px;
+  font-weight: normal;
+  text-align: left;
+}
+
 .admin__users {
+  flex-basis: 20%;
   font-size: 18px;
 }
 
@@ -143,14 +159,32 @@ a {
   color: #fff;
   font-size: 14px;
   font-weight: bold;
+  outline: none;
+  transition: all 0.4s ease;
 }
 
 .admin__buttons-change {
   background-color: #24b4ce;
 }
 
+.admin__buttons-change:hover {
+  background-color: #1c8ea3;
+}
+
 .admin__buttons-delete {
   background-color: #e44a4a;
+}
+
+.admin__buttons-delete:hover {
+  background-color: #da2121;
+}
+
+.admin__buttons-role {
+  background-color: #1a9c1a;
+}
+
+.admin__buttons-role:hover {
+  background-color: #137013;
 }
 
 .header {
@@ -946,6 +980,23 @@ a {
 
 .edit-modal .btn {
   margin-bottom: 10px;
+}
+
+.edit-modal__role h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.edit-modal__role form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-modal__role form select {
+  margin-bottom: 20px;
+  padding: 15px;
+  outline: none;
 }
 
 .edit-modal .modal-header {

@@ -26,6 +26,7 @@ Route::middleware("auth")->group(function () {
     Route::post('admin/{user}/edit', [AdminController::class, "edit"])->middleware("role:admin")->name("complete-modal-edit");
     Route::post('/admin/{user}', [AdminController::class, "update"])->name('admin-update');
     Route::post('/admin/{user}/delete', [GraduateController::class, "delete"]);
+    Route::post('/admin/{user}/role', [AdminController::class, "role"]);
     Route::patch('/profile/{user}', [GraduateController::class, "update"])->name('profile-update');
 });
 

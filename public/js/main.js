@@ -103,6 +103,10 @@ $(document).ready(function () {
   $(".admin__buttons-delete").click(function () {
     $(".edit-modal__delete").attr("data-id", $(this).attr("data-id"));
   });
+  $(".admin__buttons-role").click(function () {
+    $("#role-form").attr("data-id", $(this).attr("data-id"));
+  });
+  $("#role-form").submit(roleAssign);
 });
 
 function editForm() {
@@ -162,7 +166,6 @@ function storeData(e) {
     success: function success(response) {
       $('#create').modal('hide');
       $("#row-".concat(response["id"], " a")).text(response["name"] + " " + response["surname"]);
-      console.log(response);
     },
     error: function error(data) {
       console.log("error");
@@ -186,6 +189,33 @@ function deleteUser() {
     },
     error: function error(response) {
       console.log("error");
+    },
+    dataType: 'json'
+  });
+}
+
+function roleAssign(e) {
+  e.preventDefault();
+  var id = $(this).attr("data-id");
+  var role_id = $("#role-name").val();
+  $.ajax({
+    type: "POST",
+    url: "/admin/".concat(id, "/role"),
+    data: {
+      _token: $("meta[name='csrf-token']").attr("content"),
+      role_id: role_id,
+      user_id: id
+    },
+    success: function success(response) {
+      $('#roleModal').modal('hide');
+      $("#row-".concat(response["id"], " .admin__roles")).children("h4").detach();
+      response["names"].forEach(function (name) {
+        $("#row-".concat(response["id"], " .admin__roles")).append(" <h4>".concat(name, "</h4>"));
+      });
+      console.log(response["names"]);
+    },
+    error: function error(response) {
+      console.log("error3");
     },
     dataType: 'json'
   });

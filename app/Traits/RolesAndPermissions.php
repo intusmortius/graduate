@@ -12,18 +12,31 @@ trait RolesAndPermissions
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
-    public function assignRole($role_name)
+    public function assignRole(...$role_names)
     {
-        $role_o = Role::where("name", $role_name)->get();
-
-        return $this->roles()->sync($role_o, false);
+        foreach ($role_names as $role_name) {
+            $role_o = Role::where("name", $role_name)->get();
+            $this->roles()->sync($role_o, false);
+        }
+        return;
     }
 
-    public function detachRole($role_name)
+    public function detachRole(...$role_names)
     {
-        $role_o = Role::where("name", $role_name)->get();
 
-        return $this->roles()->detach($role_o, false);
+        foreach ($role_names as $role_name) {
+            $role_o = Role::where("name", $role_name)->get();
+            $this->roles()->detach($role_o, false);
+        }
+
+        return;
+    }
+
+    public function detachAllRoles()
+    {
+        $roles = Role::all(["name"])->flatten()->pluck("name")->unique();
+
+        return $this->detachRole(...$roles);
     }
 
     public function hasRoles(...$roles)

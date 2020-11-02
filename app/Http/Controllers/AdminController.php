@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Response;
@@ -10,7 +11,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view("admin", ["users" => User::paginate(40, ["id", "name", "surname"])]);
+        return view("admin", ["users" => User::paginate(40, ["id", "name", "surname"]), "roles" => Role::all()]);
     }
 
     public function edit(User $user)
@@ -33,5 +34,14 @@ class AdminController extends Controller
         ]);
 
         return Response::json($request);
+    }
+
+    public function role(Request $request)
+    {
+        $user =  User::find($request->user_id);
+        $role = Role::whereIn("id", $request->role_id)->get(["name"])->flatten()->pluck("name")->unique();
+        $user->detachAllRoles();
+        $user->assignRole(...$role);
+        return Response::json(["names" => $user->roles->flatten()->pluck("name"), "id" => $user->id]);
     }
 }

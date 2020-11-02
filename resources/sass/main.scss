@@ -33,6 +33,10 @@ a {
     color: $primary_color2;
 }
 
+button {
+    outline: none;
+}
+
 
 .container {
     max-width: 945px;
@@ -124,6 +128,7 @@ a {
         position: relative;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
         padding: 10px;
 
         span {
@@ -148,7 +153,18 @@ a {
 
     }
 
+    &__roles {
+        flex-basis: 20%;
+
+        h4 {
+            font-size: 14px;
+            font-weight: normal;
+            text-align: left;
+        }
+    }
+
     &__users {
+        flex-basis: 20%;
         font-size: 18px;
     }
 
@@ -159,15 +175,32 @@ a {
             color: #fff;
             font-size: 14px;
             font-weight: bold;
+            outline: none;
+            transition: all .4s ease;
         }
 
         &-change {
             background-color: rgb(36, 180, 206);
 
+            &:hover {
+                background-color: darken(rgb(36, 180, 206), 10%);
+            }
         }
 
         &-delete {
             background-color: rgb(228, 74, 74);
+
+            &:hover {
+                background-color: darken(rgb(228, 74, 74), 10%);
+            }
+        }
+
+        &-role {
+            background-color: rgb(26, 156, 26);
+
+            &:hover {
+                background-color: darken(rgb(26, 156, 26), 10%);
+            }
         }
     }
 }
@@ -1035,6 +1068,25 @@ a {
 .edit-modal {
     .btn {
         margin-bottom: 10px;
+    }
+
+    &__role {
+        h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            select {
+                margin-bottom: 20px;
+                padding: 15px;
+                outline: none;
+            }
+        }
     }
 
     .modal-header {

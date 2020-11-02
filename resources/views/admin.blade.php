@@ -57,11 +57,20 @@
                             <span>{{$loop->iteration}}</span>
                             <a href="{{ route("profile", $user) }}">{{$user->fullname()}}</a>
                         </div>
+                        <div class="admin__roles">
+                            @forelse ($user->roles as $role)
+                            <h4>{{ $role->name }}</h4>
+                            @empty
+                            <h4>no roles yet</h4>
+                            @endforelse
+                        </div>
                         <div class="admin__buttons">
 
                             <button class="admin__buttons-change modalEdit" data-toggle="modal" data-target="#create"
                                 data-id="{{$user->id}}">Редактировать</button>
                             @if(auth()->user()->id!==$user->id)
+                            <button data-id="{{$user->id}}" data-toggle="modal" data-target="#roleModal"
+                                class="admin__buttons-role">Права</button>
                             <button data-id="{{$user->id}}" data-toggle="modal" data-target="#deleteModal"
                                 class="admin__buttons-delete">Удалить</button>
                             @endif
@@ -77,4 +86,6 @@
     </x-modals.create>
     <x-modals.delete>
     </x-modals.delete>
+    <x-modals.role :roles="$roles">
+    </x-modals.role>
 </x-app>

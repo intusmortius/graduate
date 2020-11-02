@@ -8,6 +8,10 @@ $("#deleteBtn").click(deleteUser)
 $(".admin__buttons-delete").click(function(){
 $(".edit-modal__delete").attr("data-id", $(this).attr("data-id"))
 })
+$(".admin__buttons-role").click(function(){
+$("#role-form").attr("data-id", $(this).attr("data-id"))
+})
+$("#role-form").submit(roleAssign)
 });
 
 function editForm() {
@@ -69,7 +73,6 @@ $.ajax({
 success: function (response) {
     $('#create').modal('hide')
     $(`#row-${response["id"]} a`).text(response["name"]+" "+response["surname"])
-    console.log(response)
 },
 error: function(data){
     console.log("error")
@@ -96,4 +99,33 @@ function deleteUser() {
         },
         dataType:'json',
     })
+}
+
+function roleAssign(e){
+    e.preventDefault()
+    var id = $(this).attr("data-id")
+    var role_id = $("#role-name").val()
+    $.ajax({
+        type:"POST",
+        url: `/admin/${id}/role`,
+        data: {
+            _token:$("meta[name='csrf-token']").attr("content"),
+            role_id: role_id,
+            user_id: id
+            },
+        success:function(response){
+            $('#roleModal').modal('hide')
+            $(`#row-${response["id"]} .admin__roles`).children( "h4" ).detach()
+            response["names"].forEach(name => {
+                $(`#row-${response["id"]} .admin__roles`).append(` <h4>${name}</h4>`);
+            });
+            console.log(response["names"])
+
+        },
+        error:function(response){
+            console.log("error3")
+        },
+        dataType:'json',
+    })
+
 }
