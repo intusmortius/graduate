@@ -201,11 +201,22 @@ button {
   align-items: center;
 }
 
-.head__logo span {
-  font-weight: bold;
-  font-size: 36px;
-  color: #fff;
-  text-shadow: 3px 8px 4px rgba(0, 0, 0, 0.25);
+.head__logo {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.head__logo img {
+  width: 110%;
+  height: 110%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: -4px;
+  left: -4px;
 }
 
 .head__list {
@@ -272,6 +283,10 @@ button {
   border-radius: 20px;
   color: #fff;
   margin-bottom: 57px;
+}
+
+.auth__verify {
+  max-width: 600px;
 }
 
 .auth__title {
@@ -430,11 +445,11 @@ button {
 }
 
 .filter.active .filter__options {
-  height: 200px;
+  height: 74px;
 }
 
 .filter.active .filter__name {
-  margin-bottom: 57px;
+  margin-bottom: 30px;
 }
 
 .filter.active svg {
@@ -463,21 +478,36 @@ button {
   height: 0;
   overflow: hidden;
   transition: all 0.4s ease;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter__search {
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 30%;
+  margin: 5px 0 36px 0;
 }
 
 .filter__option {
-  flex-basis: 35%;
-  display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-basis: 50%;
+  display: flex;
   margin: 5px 40px 36px 5px;
   font-size: 16px;
+}
+
+.filter__option label {
+  display: inline-block;
+  margin-right: 20px;
 }
 
 .filter__option input {
   border: none;
   box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
-  height: 30px;
+  height: 35px;
+  width: 100%;
 }
 
 .filter__body:hover .filter__options {
@@ -485,17 +515,8 @@ button {
 }
 
 @media (max-width: 1199px) {
-  .filter__option {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .filter__option input {
     width: 100%;
-  }
-
-  .filter.active .filter__options {
-    height: 250px;
   }
 }
 
@@ -640,7 +661,7 @@ button {
     position: absolute;
     left: 0;
     height: 0;
-    top: 78px;
+    top: 116px;
     width: 100%;
     padding: 10px 0 20px 0;
     overflow: hidden;
@@ -674,7 +695,11 @@ button {
   }
 
   .filter.active .filter__options {
-    height: 520px;
+    height: 145px;
+  }
+
+  .filter.active .filter__options .filter__search {
+    flex-basis: 100%;
   }
 
   .gallery img {

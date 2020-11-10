@@ -15,7 +15,7 @@ class GraduateController extends Controller
 
     public function table()
     {
-        return view("table", ["users" => User::paginate(40)]);
+        return view("table", ["users" => User::paginate(40), "search" => null]);
     }
 
     public function show(User $user)

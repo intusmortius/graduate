@@ -3,14 +3,14 @@
         <div class="container">
             <div class="section-title">
                 <div class="section-title__wrapper">
-                    <h2>Панель управления</h2>
+                    <h2>Панель управління</h2>
                     <div class="section-title__line"></div>
                 </div>
             </div>
             <div id="filter" class="filter">
                 <div class="filter__body">
                     <div id="filter-name" class="filter__name">
-                        <span>Фильтр</span>
+                        <span>Пошук</span>
                         <svg class="toggle" width="20" height="16" viewBox="0 0 20 16" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -18,37 +18,20 @@
                                 fill="black" stroke="black" />
                         </svg>
                     </div>
-                    <div class="filter__options">
+                    <form class="filter__options" method="GET" action="/searchadmin">
+                        @csrf
                         <div class="filter__option">
-                            <label for="">Имя</label>
-                            <input type="text">
+                            <input name="name_search" type="text" value="{{ $search }}">
                         </div>
-                        <div class="filter__option">
-                            <label for="">Факультет</label>
-                            <input type="text">
+                        <div class="filter__search">
+                            <button class="btn" type="submit">Шукати</button>
                         </div>
-                        <div class="filter__option">
-                            <label for="">Специальность</label>
-                            <input type="text">
-                        </div>
-                        <div class="filter__option">
-                            <label for="">Кафедра</label>
-                            <input type="text">
-                        </div>
-                        <div class="filter__option">
-                            <label for="">Группа</label>
-                            <input type="text">
-                        </div>
-                        <div class="filter__option">
-                            <label for="">Место работы</label>
-                            <input type="text">
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="block-body">
 
-                <div class="admin__title">Пользователи</div>
+                <div class="admin__title">Користувачі</div>
                 <div class="admin__table">
                     @foreach ($users as $user)
 
@@ -61,18 +44,18 @@
                             @forelse ($user->roles as $role)
                             <h4>{{ $role->name }}</h4>
                             @empty
-                            <h4>no roles yet</h4>
+                            <h4>Ролей немаєe</h4>
                             @endforelse
                         </div>
                         <div class="admin__buttons">
 
                             <button class="admin__buttons-change modalEdit" data-toggle="modal" data-target="#create"
-                                data-id="{{$user->id}}">Редактировать</button>
+                                data-id="{{$user->id}}">Редагувати</button>
                             @if(auth()->user()->id!==$user->id)
                             <button data-id="{{$user->id}}" data-toggle="modal" data-target="#roleModal"
                                 class="admin__buttons-role">Права</button>
                             <button data-id="{{$user->id}}" data-toggle="modal" data-target="#deleteModal"
-                                class="admin__buttons-delete">Удалить</button>
+                                class="admin__buttons-delete">Видалити</button>
                             @endif
                         </div>
                     </div>

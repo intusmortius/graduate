@@ -2,7 +2,7 @@
     <section class="section">
         <div class="container">
             <div class="auth">
-                <h2 class="auth__title">Регистрация</h2>
+                <h2 class="auth__title">Реєстрація</h2>
                 <p class="auth__greeting">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet placeat iusto nostrum tempora quasi
                     itaque in saepe, voluptatibus, illum error eos quas? Dicta possimus fuga ab expedita voluptates
@@ -13,7 +13,7 @@
                     @csrf
 
                     <div class="auth__field">
-                        <label class="auth__label" for="name">{{ __('Имя') }}</label>
+                        <label class="auth__label" for="name">{{ __('Ім\'я') }}</label>
 
                         <div>
                             <input class="auth__input @error('email') auth__invalid-input @enderror" id="name"
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="auth__field">
-                        <label class="auth__label" for="surname">{{ __('Фамилия') }}</label>
+                        <label class="auth__label" for="surname">{{ __('Прізвище') }}</label>
 
                         <div>
                             <input class="auth__input @error('surname') auth__invalid-input @enderror" id="surname"
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="auth__field">
-                        <label class="auth__label" for="fathername">{{ __('Отчество') }}</label>
+                        <label class="auth__label" for="fathername">{{ __('По батькові') }}</label>
 
                         <div>
                             <input class="auth__input @error('fathername') auth__invalid-input @enderror"
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="auth__field">
-                        <label class="auth__label" for="specialty">{{ __('Специальность') }}</label>
+                        <label class="auth__label" for="specialty">{{ __('Спеціальність') }}</label>
 
                         <div>
                             <input class="auth__input @error('specialty') auth__invalid-input @enderror" id="specialty"
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <div class="auth__field">
-                        <label class="auth__label" for="group">{{ __('Группа') }}</label>
+                        <label class="auth__label" for="group">{{ __('Група') }}</label>
 
                         <div>
                             <input class="auth__input @error('group') auth__invalid-input @enderror" id="group"
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     <div class="auth__field">
-                        <label class="auth__label" for="workplace">{{ __('Место работы') }}</label>
+                        <label class="auth__label" for="workplace">{{ __('Місце роботи') }}</label>
 
                         <div>
                             <input class="auth__input @error('workplace') auth__invalid-input @enderror" id="workplace"
@@ -134,7 +134,7 @@
                     </div>
 
                     <div class="auth__field">
-                        <label class="auth__label" for="email">{{ __('Электронная почта') }}</label>
+                        <label class="auth__label" for="email">{{ __('Електронна пошта') }}</label>
 
                         <div class="col-md-6">
                             <input id="email" type="email"
@@ -166,7 +166,7 @@
                     </div>
 
                     <div class="auth__field">
-                        <label class="auth__label" for="password-confirm">{{ __('Подтверждение пароля') }}</label>
+                        <label class="auth__label" for="password-confirm">{{ __('Підтвердження пароля') }}</label>
 
                         <div>
                             <input id="password-confirm" type="password" class="auth__input"
@@ -177,7 +177,7 @@
                     <div class="auth__field">
                         <div>
                             <button type="submit" class="btn">
-                                {{ __('Register') }}
+                                {{ __('Зареєструватися') }}
                             </button>
                         </div>
                     </div>

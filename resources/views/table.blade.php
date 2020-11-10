@@ -10,7 +10,7 @@
             <div id="filter" class="filter">
                 <div class="filter__body">
                     <div id="filter-name" class="filter__name">
-                        <span>Фильтр</span>
+                        <span>Пошук</span>
                         <svg class="toggle" width="20" height="16" viewBox="0 0 20 16" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -18,32 +18,35 @@
                                 fill="black" stroke="black" />
                         </svg>
                     </div>
-                    <div class="filter__options">
+                    <form class="filter__options" method="GET" action="/search">
+                        @csrf
                         <div class="filter__option">
-                            <label for="">Имя</label>
-                            <input type="text">
+                            <input name="name_search" type="text" value="{{ $search }}">
                         </div>
-                        <div class="filter__option">
+                        {{-- <div class="filter__option">
                             <label for="">Факультет</label>
-                            <input type="text">
+                            <input name="name_faculty" type="text">
                         </div>
                         <div class="filter__option">
                             <label for="">Специальность</label>
-                            <input type="text">
+                            <input name="name_specialty" type="text">
                         </div>
                         <div class="filter__option">
                             <label for="">Кафедра</label>
-                            <input type="text">
+                            <input name="name_cathedra" type="text">
                         </div>
                         <div class="filter__option">
                             <label for="">Группа</label>
-                            <input type="text">
+                            <input name="name_group" type="text">
                         </div>
                         <div class="filter__option">
                             <label for="">Место работы</label>
-                            <input type="text">
+                            <input name="name_workplace" type="text">
+                        </div> --}}
+                        <div class="filter__search">
+                            <button class="btn" type="submit">Шукати</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="block-body table">
@@ -51,16 +54,16 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">ФИО</th>
+                            <th scope="col">ПІБ</th>
                             <th scope="col">Факультет</th>
-                            <th scope="col">Специальность</th>
+                            <th scope="col">Спеціальність</th>
                             <th scope="col">Кафедра</th>
-                            <th scope="col">Группа</th>
-                            <th scope="col">Место работы</th>
+                            <th scope="col">Група</th>
+                            <th scope="col">Місце роботи</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @forelse($users as $user)
                         <tr>
                             <th scope="row">{{$loop->iteration}}</th>
                             <td><a href="{{ route("profile", $user) }}">{{$user->fullname()}}</a></td>
@@ -70,7 +73,15 @@
                             <td>{{ $user->group }}</td>
                             <td>{{ $user->workplace }}</td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <th scope="row"></th>
+                        <td>empty</td>
+                        <td>empty</td>
+                        <td>empty</td>
+                        <td>empty</td>
+                        <td>empty</td>
+                        <td>empty</td>
+                        @endforelse
                     </tbody>
                 </table>
                 {{ $users->links("vendor.pagination.default") }}

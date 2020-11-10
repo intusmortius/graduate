@@ -3,16 +3,16 @@
         deleteModal
     </x-slot>
     <x-slot name="title">
-        Delete
+        Видалення
     </x-slot>
     <x-slot name="class">
         edit-modal
     </x-slot>
     <div class="edit-modal__delete">
-        <p>Вы уверены что хотите удалить пользователя</p>
+        <p>Ви впевнені що хочете видалити користувача</p>
         <div class="edit-modal__delete-item">
-            <button id="deleteBtn" class="btn">Удалить</button>
-            <button class="btn edit__cancel cancelBtn">Отмена</button>
+            <button id="deleteBtn" class="btn">Видалити</button>
+            <button class="btn edit__cancel cancelBtn">Відміна</button>
         </div>
     </div>
 </x-modal>

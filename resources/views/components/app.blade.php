@@ -32,7 +32,7 @@
             <div class="head">
                 <a href="{{ route("home") }}">
                     <div class="head__logo">
-                        <span>PSTU</span>
+                        <img src="{{ asset("img/logo.jpg") }}" alt="logo">
                     </div>
                 </a>
                 <div id="burger" class="burger">
@@ -41,17 +41,17 @@
                 <nav id="navmenu" class="head__nav">
                     @guest
                     <div class="head__list">
-                        <a class="head__list-item" href="{{ route("login") }}">{{__("Вход")}}</a>
-                        <a class="head__list-item" href="{{ route("register") }}">{{ __("Регистрация") }}</a>
+                        <a class="head__list-item" href="{{ route("login") }}">{{__("Вхід")}}</a>
+                        <a class="head__list-item" href="{{ route("register") }}">{{ __("Реєстрація") }}</a>
                     </div>
                     @else
                     <div class="head__list">
                         <a href="{{ route("home") }}" class="head__list-item">{{__("Галерея")}}</a>
                         <a href="{{ route("table") }}" class="head__list-item">{{__("Списки")}}</a>
-                        <a href="{{ route("profile",auth()->user()) }}" class="head__list-item">{{__("Профиль")}}</a>
+                        <a href="{{ route("profile",auth()->user()) }}" class="head__list-item">{{__("Профіль")}}</a>
                         <form method="POST" action="/logout">@csrf
                             <button class="head__list-item head__logout" type="submit"
-                                name="submit">{{__("Выйти")}}</button>
+                                name="submit">{{__("Вийти")}}</button>
                         </form>
                     </div>
                     @endguest
@@ -66,7 +66,7 @@
     <footer class="footer">
         <div class="foot">
             <div class="foot__contacts">
-                <h3 class="foot__title">Контакты</h3>
+                <h3 class="foot__title">Контакти</h3>
                 <span class="foot__item">Вулиця Італійська, 115, 3 корпус ДВНЗ "ПДТУ"</span>
                 <span class="foot__item">kaf-inf@i.ua</span>
             </div>

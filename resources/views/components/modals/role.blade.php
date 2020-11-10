@@ -5,13 +5,13 @@
         roleModal
     </x-slot>
     <x-slot name="title">
-        Role
+        Ролі
     </x-slot>
     <x-slot name="class">
         edit-modal
     </x-slot>
     <div class="edit-modal__role">
-        <h3>Назначить роль пользователю</h3>
+        <h3>Призначити роль користувачеві</h3>
         <form id="role-form" action="">
             @csrf
             <select name="name" id="role-name" multiple required>
@@ -21,7 +21,7 @@
                 <span>There are no roles yet !</span>
                 @endforelse
             </select>
-            <button class="btn" type="submit" name="submit">Назначить</button>
+            <button class="btn" type="submit" name="submit">Призначити</button>
         </form>
     </div>
 </x-modal>

@@ -11,7 +11,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view("admin", ["users" => User::paginate(40, ["id", "name", "surname"]), "roles" => Role::all()]);
+        return view("admin", ["users" => User::paginate(40, ["id", "name", "surname"]), "roles" => Role::all(), "search" => null]);
     }
 
     public function edit(User $user)
