@@ -95,7 +95,7 @@
                     </div>
                     <div class="edit__field edit__text">
                         <label for="about">{{ __("Про себе") }}</label>
-                        <textarea name="about" id="about" cols="30" rows="10"></textarea>
+                        <textarea name="about" id="about" cols="30" rows="10" value="{{ $user->about }}"></textarea>
                     </div>
                     <div class="edit__buttons">
                         <button class="edit__change" type="submit" name="submit">Змінити</button>

@@ -17,17 +17,13 @@
                     <p class="profile__description">Кафедра: {{ $user->cathedra }}</p>
                     <p class="profile__description">Група: {{$user->group}}</p>
                     <p class="profile__description">Місце роботи: {{ $user->workplace }}</p>
+                    @if ($user->about)
                     <h3 class="profile__about-title">Про себе </h3>
                     <p class="profile__about">
-                        Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является
-                        стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный
-                        печатник
-                        создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов.
-                        Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в
-                        электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с
-                        образцами
-                        Lorem Ipsum в 60-х годах и.
+                        {{$user->about}}
                     </p>
+                    @endif
+
                 </div>
             </div>
 

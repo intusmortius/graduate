@@ -42,6 +42,10 @@ class GraduateController extends Controller
             "avatar" => ["file"],
         ]);
 
+        if (request("about")) {
+            $attributes["about"] = request("about");
+        }
+
         if (request("avatar")) {
             $attributes["avatar"] = request("avatar")->store("avatar");
         }

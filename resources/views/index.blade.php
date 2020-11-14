@@ -12,6 +12,7 @@
                 <div class="gallery__body">
                     @foreach ($users as $user)
 
+                    @if(!$user->hasRoles("admin"))
                     <a href="{{ route("profile", $user) }}" class="gallery__item animate__animated  animate__fadeIn">
                         <div class="gallery__hovereffect">
                             <img src="{{ $user->avatar }}" alt="avatar" class="gallery__img">
@@ -21,6 +22,8 @@
                             </div>
                         </div>
                     </a>
+                    @endif
+
 
                     @endforeach
                 </div>

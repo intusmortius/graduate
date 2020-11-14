@@ -67,10 +67,19 @@
         <div class="foot">
             <div class="foot__contacts">
                 <h3 class="foot__title">Контакти</h3>
-                <span class="foot__item">Вулиця Італійська, 115, 3 корпус ДВНЗ "ПДТУ"</span>
-                <span class="foot__item">kaf-inf@i.ua</span>
+                <span class="foot__item">Email: kaf-inf@i.ua</span>
+                <span class="foot__item">Телефон: +38 (0629) 44-66-18</span>
+                <span class="foot__item">Завідуючий кафедрою: Мiроненко Д.С.</span>
+            </div>
+            <div class="foot__contacts">
+                <h3 class="foot__title">Адреса</h3>
+                <span class="foot__item">Вулиця Італійська, 115, 3
+                    корпус ДВНЗ "ПДТУ"</span>
+                <span class="foot__item"><a href="https://goo.gl/maps/eRUqvBhyAn6nTopH6">Знайти на картi</a></span>
+
             </div>
         </div>
+        <div class="footer__dev"><span>Розробка <a href="#">ст. гр. ВТ-17 Крутiков Влад</a></span></div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>

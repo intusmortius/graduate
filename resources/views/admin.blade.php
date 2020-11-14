@@ -44,7 +44,7 @@
                             @forelse ($user->roles as $role)
                             <h4>{{ $role->name }}</h4>
                             @empty
-                            <h4>Ролей немаєe</h4>
+                            <h4>Ролi вiдсутнi</h4>
                             @endforelse
                         </div>
                         <div class="admin__buttons">

@@ -68,9 +68,10 @@ $.ajax({
     specialty:specialty,
     cathedra:cathedra,
     group:group,
-    workplace:workplace
+    workplace:workplace,
     },
 success: function (response) {
+    console.log(response);
     $('#create').modal('hide')
     $(`#row-${response["id"]} a`).text(response["name"]+" "+response["surname"])
 },

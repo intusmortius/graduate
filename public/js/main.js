@@ -164,6 +164,7 @@ function storeData(e) {
       workplace: workplace
     },
     success: function success(response) {
+      console.log(response);
       $('#create').modal('hide');
       $("#row-".concat(response["id"], " a")).text(response["name"] + " " + response["surname"]);
     },

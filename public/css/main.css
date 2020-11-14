@@ -7,6 +7,7 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
+  outline: none;
 }
 
 html,
@@ -241,14 +242,26 @@ button {
 }
 
 .footer {
-  padding: 36px 55px;
+  padding: 30px 55px 15px 55px;
   flex-shrink: 0;
   background: rgba(24, 24, 24, 0.9);
 }
 
+.footer__dev {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.footer__dev span,
+.footer__dev a {
+  color: #909090;
+  font-size: 14px;
+}
+
 .foot {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   position: relative;
   bottom: 0;
 }
@@ -262,14 +275,15 @@ button {
   color: #fff;
   font-weight: bold;
   font-size: 18px;
-  margin-bottom: 38px;
+  margin-bottom: 20px;
 }
 
-.foot__item {
+.foot__item,
+.foot a {
   font-weight: 300;
   font-size: 14px;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .auth {
@@ -286,7 +300,7 @@ button {
 }
 
 .auth__verify {
-  max-width: 600px;
+  max-width: 100%;
 }
 
 .auth__title {
@@ -320,6 +334,13 @@ button {
   width: 100%;
   border: none;
   height: 30px;
+  border-radius: 5px;
+}
+
+.auth__textarea {
+  width: 100%;
+  border: none;
+  height: 120px;
   border-radius: 5px;
 }
 
@@ -1066,5 +1087,15 @@ button {
   font-size: 20px;
   line-height: 22px;
   text-align: center;
+}
+
+.contact__header {
+  background-color: #F57C00;
+  display: flex;
+  justify-content: center;
+}
+
+.contact__credit {
+  border-bottom: 1px solid lightgrey;
 }
 

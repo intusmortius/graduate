@@ -8,7 +8,7 @@
     <x-slot name="class">
         edit-modal
     </x-slot>
-    <form id="modalFormEdit" action="" method="POST">
+    <form id="modalFormEdit" action="" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="edit-modal__field">
 
@@ -43,10 +43,6 @@
         <div class="edit-modal__field">
             <label for="workplace">Місце роботи</label>
             <input name="workplace" id="workplace" type="text" required>
-        </div>
-        <div class="edit-modal__field">
-            <label for="avatar">{{ __("Фото профілю") }}</label>
-            <input name="avatar" type="file" accept=".png, .jpeg, .jpg">
         </div>
         <button id="change" class="btn" type="submit">Змінити</button>
         <button class="btn edit__cancel cancelBtn">Відміна</button>

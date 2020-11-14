@@ -23,26 +23,6 @@
                         <div class="filter__option">
                             <input name="name_search" type="text" value="{{ $search }}">
                         </div>
-                        {{-- <div class="filter__option">
-                            <label for="">Факультет</label>
-                            <input name="name_faculty" type="text">
-                        </div>
-                        <div class="filter__option">
-                            <label for="">Специальность</label>
-                            <input name="name_specialty" type="text">
-                        </div>
-                        <div class="filter__option">
-                            <label for="">Кафедра</label>
-                            <input name="name_cathedra" type="text">
-                        </div>
-                        <div class="filter__option">
-                            <label for="">Группа</label>
-                            <input name="name_group" type="text">
-                        </div>
-                        <div class="filter__option">
-                            <label for="">Место работы</label>
-                            <input name="name_workplace" type="text">
-                        </div> --}}
                         <div class="filter__search">
                             <button class="btn" type="submit">Шукати</button>
                         </div>
@@ -64,6 +44,7 @@
                     </thead>
                     <tbody>
                         @forelse($users as $user)
+                        @if(!$user->hasRoles("admin"))
                         <tr>
                             <th scope="row">{{$loop->iteration}}</th>
                             <td><a href="{{ route("profile", $user) }}">{{$user->fullname()}}</a></td>
@@ -73,6 +54,7 @@
                             <td>{{ $user->group }}</td>
                             <td>{{ $user->workplace }}</td>
                         </tr>
+                        @endif
                         @empty
                         <th scope="row"></th>
                         <td>empty</td>

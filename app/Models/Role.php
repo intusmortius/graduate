@@ -16,13 +16,17 @@ class Role extends Model
         return $this->belongsToMany(Permission::class)->withTimestamps();
     }
 
-    public function assignPermission($permission_name)
+    public function assignPermission(...$permission_names)
     {
+        foreach ($permission_names as $permission_name) {
 
-        $permission_o = Permission::where("name", $permission_name)->get();
+            $permission_o = Permission::where("name", $permission_name)->get();
 
-        return $this->permissions()->sync($permission_o, false);
+            $this->permissions()->sync($permission_o, false);
+        }
+        return;
     }
+
     public function detachPermission($permission_name)
     {
 

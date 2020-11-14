@@ -14,6 +14,7 @@ $btn_color: #FF9121;
     padding: 0;
     border: 0;
     box-sizing: border-box;
+    outline: none;
 }
 
 html,
@@ -260,14 +261,26 @@ button {
 
 
 .footer {
-    padding: 36px 55px;
+    padding: 30px 55px 15px 55px;
     flex-shrink: 0;
     background: rgba(24, 24, 24, 0.9);
+
+    &__dev {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+
+        span,
+        a {
+            color: #909090;
+            font-size: 14px;
+        }
+    }
 }
 
 .foot {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     position: relative;
     bottom: 0;
 
@@ -280,20 +293,21 @@ button {
         color: $primary_text1;
         font-weight: bold;
         font-size: 18px;
-        margin-bottom: 38px;
+        margin-bottom: 20px;
     }
 
-    &__item {
+    &__item,
+    a {
         font-weight: 300;
         font-size: 14px;
         color: $primary_text1;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
     }
 }
 
 .auth {
     &__verify {
-        max-width: 600px;
+        max-width: 100%;
     }
 
     margin: auto;
@@ -339,6 +353,13 @@ button {
         width: 100%;
         border: none;
         height: 30px;
+        border-radius: 5px;
+    }
+
+    &__textarea {
+        width: 100%;
+        border: none;
+        height: 120px;
         border-radius: 5px;
     }
 
@@ -1166,4 +1187,17 @@ button {
         }
     }
 
+}
+
+
+.contact {
+    &__header {
+        background-color: $primary_color;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__credit {
+        border-bottom: 1px solid lightgrey;
+    }
 }
