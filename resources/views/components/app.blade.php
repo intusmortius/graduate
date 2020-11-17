@@ -70,6 +70,7 @@
                 <span class="foot__item">Email: kaf-inf@i.ua</span>
                 <span class="foot__item">Телефон: +38 (0629) 44-66-18</span>
                 <span class="foot__item">Завідуючий кафедрою: Мiроненко Д.С.</span>
+                <span class="foot__item"><a href="{{route("contact")}}">Зворотній зв'язок</a></span>
             </div>
             <div class="foot__contacts">
                 <h3 class="foot__title">Адреса</h3>

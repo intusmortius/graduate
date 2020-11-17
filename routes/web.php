@@ -43,7 +43,7 @@ Route::middleware(["auth", 'verified'])->group(function () {
     Route::get('admin', [AdminController::class, "index"])->middleware("role:admin")->name("admin");
     Route::get("/search", [SearchController::class, "index"]);
     Route::get("/searchadmin", [SearchController::class, "index_admin"]);
-    Route::get('/contact', [ContactController::class, "show"]);
+    Route::get('/contact', [ContactController::class, "show"])->name("contact");
     Route::post('/contact',  [ContactController::class, "mailToAdmin"]);
     Route::post('admin/{user}/edit', [AdminController::class, "edit"])->middleware("role:admin")->name("complete-modal-edit");
     Route::post('/admin/{user}', [AdminController::class, "update"])->name('admin-update');
